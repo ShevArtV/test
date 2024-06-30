@@ -123,7 +123,6 @@ class Helpers
         $session = \SendIt::getSession($this->modx, session_id(), 'Discounts');
         $session['mains'][] = $rid;
         $session['mains'] = array_unique($session['mains']);
-        $this->modx->log(1, print_r($session, 1));
         \SendIt::setSession($this->modx, $session, session_id(), 'Discounts');
     }
 
