@@ -1,175 +1,64 @@
 {extends 'file:templates/wrapper.tpl'}
 {block 'content'}
-
-    <!-- Shop Section Start -->
-    <section class="single-product-section">
+    <!-- Product Details Area Start -->
+    <div class="product-details-area pt-100px pb-100px">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 col-md-12">
-                    <div class="carousel slide product-slider" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="ps-img">
-                                    <img src="{$_modx->resource.image | pthumb: 'w=500&h=500&zc=1&f=webp'}" alt="{$_modx->resource.pagetitle}">
-                                </div>
+                <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                    <!-- Swiper -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="img-responsive m-auto" src="{$_modx->resource.image | pthumb: 'w=576&h=576&zc=1&f=webp'}"
+                                     alt="">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-12">
-                    <div class="sin-product-details">
-                        <h3>{$_modx->resource.pagetitle}</h3>
-
-                        <div class="product-price clearfix">
-                            <span class="price">
-                                <span><span class="woocommerce-Price-currencySymbol">$</span>{$_modx->resource.price}</span>
-                            </span>
+                <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                    <div data-msac-cart="product" class="product-details-content quickview-content ml-25px">
+                        <h2>{$_modx->resource.pagetitle}</h2>
+                        <div class="pricing-meta">
+                            <ul class="d-flex">
+                                <li class="new-price">$
+                                    <span>{$_modx->resource.price}</span>
+                                </li>
+                                <li class="old-price {$_modx->resource.old_price ? '' : 'd-none'}">
+                                    <del>$
+                                        <span>{$_modx->resource.old_price}</span>
+                                    </del>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="pro-excerp">
-                            {$_modx->resource.content}
-                        </div>
 
-                        <div class="product-cart-qty">
-                            <div class="quantityd clearfix">
-                                <button class="qtyBtn btnMinus"><span>-</span></button>
-                                <input name="qty" value="1" title="Qty" class="input-text qty text carqty" type="text">
-                                <button class="qtyBtn btnPlus">+</button>
-                            </div>
-                            <a href="#" class="add-to-cart-btn">Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row"><div class="col-lg-12"><div class="divider"></div></div></div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="related-product-area">
-                        <h3>Related Products</h3>
-                        <div class="related-slider owl-carousel">
-                            <div class="single-shop-product">
-                                <div class="sp-thumb">
-                                    <img src="assets/images/shop/5.jpg" alt="" class="">
-                                    <div class="pro-badge">
-                                        <p class="sale">Sale</p>
-                                    </div>
-                                </div>
-                                <div class="sp-details">
-                                    <h4>VRBOX Gaming</h4>
-                                    <div class="product-price clearfix">
-                                        <span class="price">
-                                            <del><span><span class="woocommerce-Price-currencySymbol">$</span>42.00</span></del>
-                                            <ins><span><span class="woocommerce-Price-currencySymbol">$</span>38.00</span></ins>
-                                        </span>
-                                    </div>
-                                    <div class="sp-details-hover">
-                                        <a class="sp-cart" href="#"><i class="twi-cart-plus"></i><span>Add to cart</span></a>
-                                        <a class="sp-wishlist" href="#"><i class="twi-heart2"></i></a>
-                                    </div>
-                                </div>
+                        <p class="mt-30px mb-0">{$_modx->resource.content}</p>
+                        <form class="pro-details-quality" data-si-preset="cart_add" data-si-form="product-{$id}" data-si-nosave>
+                            <input type="hidden" name="id" value="{$_modx->resource.id}"/>
+                            <input type="hidden" name="options[main]" value="{$_modx->resource.id}"/>
+                            <input type="hidden" name="options[parent]" value="{$_modx->resource.parent}"/>
+                            <div class="cart-plus-minus ms-input-number-wrap">
+                                <button class="dec qtybutton ms-input-number-btn ms-input-number-minus" type="button">&#8722;</button>
+                                <input class="cart-plus-minus-box ms-input-number-emulator" min="1" value="1" name="count" data-msac-prop="count" type="text">
+                                <button class="inc qtybutton ms-input-number-btn ms-input-number-plus" type="button">&#43;</button>
                             </div>
-                            <div class="single-shop-product">
-                                <div class="sp-thumb">
-                                    <img src="assets/images/shop/1.jpg" alt="" class="">
-                                    <div class="pro-badge">
-                                        <p class="hot">Hot</p>
-                                    </div>
-                                </div>
-                                <div class="sp-details">
-                                    <h4>Gaming Mouse</h4>
-                                    <div class="product-price clearfix">
-                                        <span class="price">
-                                            <del><span><span class="woocommerce-Price-currencySymbol">$</span>42.00</span></del>
-                                            <ins><span><span class="woocommerce-Price-currencySymbol">$</span>38.00</span></ins>
-                                        </span>
-                                    </div>
-                                    <div class="sp-details-hover">
-                                        <a class="sp-cart" href="#"><i class="twi-cart-plus"></i><span>Add to cart</span></a>
-                                        <a class="sp-wishlist" href="#"><i class="twi-heart2"></i></a>
-                                    </div>
-                                </div>
+                            <div class="pro-details-cart">
+                                <button class="add-cart" type="button" data-si-event="click"> Add To Cart</button>
                             </div>
-                            <div class="single-shop-product">
-                                <div class="sp-thumb">
-                                    <img src="assets/images/shop/8.jpg" alt="" class="">
-                                </div>
-                                <div class="sp-details">
-                                    <h4>Wirless Headset</h4>
-                                    <div class="product-price clearfix">
-                                        <span class="price">
-                                            <span><span class="woocommerce-Price-currencySymbol">$</span>122.00</span>
-                                        </span>
-                                    </div>
-                                    <div class="sp-details-hover">
-                                        <a class="sp-cart" href="#"><i class="twi-cart-plus"></i><span>Add to cart</span></a>
-                                        <a class="sp-wishlist" href="#"><i class="twi-heart2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-shop-product">
-                                <div class="sp-thumb">
-                                    <img src="assets/images/shop/5.jpg" alt="" class="">
-                                    <div class="pro-badge">
-                                        <p class="sale">Sale</p>
-                                    </div>
-                                </div>
-                                <div class="sp-details">
-                                    <h4>VRBOX Gaming</h4>
-                                    <div class="product-price clearfix">
-                                        <span class="price">
-                                            <del><span><span class="woocommerce-Price-currencySymbol">$</span>42.00</span></del>
-                                            <ins><span><span class="woocommerce-Price-currencySymbol">$</span>38.00</span></ins>
-                                        </span>
-                                    </div>
-                                    <div class="sp-details-hover">
-                                        <a class="sp-cart" href="#"><i class="twi-cart-plus"></i><span>Add to cart</span></a>
-                                        <a class="sp-wishlist" href="#"><i class="twi-heart2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-shop-product">
-                                <div class="sp-thumb">
-                                    <img src="assets/images/shop/1.jpg" alt="" class="">
-                                    <div class="pro-badge">
-                                        <p class="hot">Hot</p>
-                                    </div>
-                                </div>
-                                <div class="sp-details">
-                                    <h4>Gaming Mouse</h4>
-                                    <div class="product-price clearfix">
-                                        <span class="price">
-                                            <del><span><span class="woocommerce-Price-currencySymbol">$</span>42.00</span></del>
-                                            <ins><span><span class="woocommerce-Price-currencySymbol">$</span>38.00</span></ins>
-                                        </span>
-                                    </div>
-                                    <div class="sp-details-hover">
-                                        <a class="sp-cart" href="#"><i class="twi-cart-plus"></i><span>Add to cart</span></a>
-                                        <a class="sp-wishlist" href="#"><i class="twi-heart2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-shop-product">
-                                <div class="sp-thumb">
-                                    <img src="assets/images/shop/8.jpg" alt="" class="">
-                                </div>
-                                <div class="sp-details">
-                                    <h4>Wirless Headset</h4>
-                                    <div class="product-price clearfix">
-                                        <span class="price">
-                                            <span><span class="woocommerce-Price-currencySymbol">$</span>122.00</span>
-                                        </span>
-                                    </div>
-                                    <div class="sp-details-hover">
-                                        <a class="sp-cart" href="#"><i class="twi-cart-plus"></i><span>Add to cart</span></a>
-                                        <a class="sp-wishlist" href="#"><i class="twi-heart2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                        </form>
+
+                        <div class="payment-img">
+                            <a href="#"><img src="assets/images//icons/payment.png" alt=""></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Shop Section End -->
+    </div>
+    <div class="related-product-area" data-si-results="{$_modx->resource.id}">
+        {'@FILE snippets/getdiscountproducts.php' | snippet: [
+        'parents' => '2,3,4,5,6',
+        'wrapperTpl' => '@FILE chunks/discounts/wrapper.tpl'
+        ]}
+    </div>
 {/block}

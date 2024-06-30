@@ -1,0 +1,11 @@
+/layout/
+/assets/components/
+/core/composer.phar
+/core/components/
+/core/vendor/
+/.idea/.gitignore
+/.idea/deployment.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/test.iml
+/.idea/vcs.xml

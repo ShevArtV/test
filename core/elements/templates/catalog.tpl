@@ -1,44 +1,37 @@
 {extends 'file:templates/wrapper.tpl'}
 {block 'content'}
-    <!-- Popular Section Start -->
-    <section class="popular-section">
-
-        <!-- Shape Round -->
-        <div class="shape-round">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <!-- Shape Round -->
-
-        <!-- Section Heading -->
-        <div class="sec-heading rotate-rl">Most <span>Popular</span></div>
-        <!-- Section Heading -->
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="sec-title">Most Popular</h2>
-                    <ul class="product-tab-title nav nav-tabs">
-                        <li><a class="active" href="#all" data-toggle="tab">All</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show in active" id="all" role="tabpanel">
-                            <div class="popular-tab-slider owl-carousel">
-                                {'!msProducts' | snippet: [
-                                    'parents' => 0,
-                                    'tpl' => '@FILE chunks/product_preview.tpl',
-                                    'limit' => 6,
-                                    'where' => ['Data.favorite' => 1]
-                                ]}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero/Intro Slider Start -->
+    <div class="section ">
+        <div class="hero-slider swiper-container slider-nav-style-1 slider-dot-style-1">
+            <!-- Hero slider Active -->
+            <div class="swiper-wrapper">
+                {'!msProducts' | snippet: [
+                    'parents' => '2,3,4,5,6',
+                    'tpl' => '@FILE chunks/product_preview.tpl',
+                    'sortby' => 'RAND()',
+                    'limit' => 6
+                ]}
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-white"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-buttons">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
-    </section>
-    <!-- Popular Section End -->
+    </div>
+    <!-- Hero/Intro Slider End -->
+    <div class="section">
+        <div class="container">
+            <div class="product-grid">
+                {'!msProducts' | snippet: [
+                'parents' => '2,3,4,5,6',
+                'tpl' => '@FILE chunks/product_item.tpl',
+                'sortby' => 'RAND()',
+                'limit' => 6
+                ]}
+            </div>
+        </div>
+    </div>
 {/block}
